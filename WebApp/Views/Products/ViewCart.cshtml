@@ -1,0 +1,48 @@
+﻿@model WebApp.Models.Cart
+@{
+    ViewData["Title"] = "ViewCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ViewCart</h1>
+<br />
+<br />
+
+<div class="col-lg-12">
+    <div class="row">
+        @foreach (var item in ViewBag.cartlist)
+        {
+            <div class="col-lg-3" style="margin:5px;background-color:palegreen">
+                <form asp-action="Order">
+                    <input type="hidden" name="id" value="@item.product.Id" />
+                    <input type="hidden" name="quans" value="@item.Quantitys" />
+                    <input type="hidden" name="tp" value="@item.totalprice" />
+
+                    <a style=" all:unset;cursor:pointer">
+                        <div style="text-align:center;">
+                            <h4 style="padding-top:20px">
+                                Name :  @item.product.Productname
+                            </h4>
+                        </div>
+                        <div style="text-align:center;">
+                            <h5 style="padding-top:20px">
+                                Price : @item.totalprice
+                            </h5>
+                        </div>
+                        <div style="text-align:center;">
+                            <h5 style="padding-top:20px">
+                                Quantity :  @item.Quantitys
+                            </h5>
+                        </div>
+                        <div style="text-align:center;padding-bottom:10px;">
+                            <input type="submit" value="Order Now" class="btn btn-primary" />
+                        </div>
+                    </a>
+
+                </form>
+            </div>
+        }
+    </div>
+
+</div>
+

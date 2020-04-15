@@ -1,0 +1,17 @@
+﻿
+@using Microsoft.AspNetCore.Authentication
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+
+</dl>
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
