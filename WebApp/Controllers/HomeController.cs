@@ -27,6 +27,11 @@ namespace WebApp.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult Login()
+        {
+            return RedirectToAction(nameof(Index));
+        }
         public async Task Logout()
         {
             await HttpContext.SignOutAsync("Cookies");
@@ -58,8 +63,7 @@ namespace WebApp.Controllers
                 List<Orders> ol = JsonConvert.DeserializeObject<List<Orders>>(data);
                 return View(ol);
 
-            }
-            //return View();    
+            } 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

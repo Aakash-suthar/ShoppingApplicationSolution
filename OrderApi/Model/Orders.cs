@@ -11,5 +11,6 @@ namespace OrderApi.Model
         public decimal? Totalcost { get; set; }
         public DateTime? Ordertime { get; set; }
         public bool? Orderstatus { get; set; }
+        public string Userid { get; set; }
     }
 }

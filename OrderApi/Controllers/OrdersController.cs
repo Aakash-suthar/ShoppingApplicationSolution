@@ -23,18 +23,11 @@ namespace OrderApi.Controllers
         }
 
         // GET: api/Orders
-           [HttpGet]
-         public async Task<ActionResult<IEnumerable<Orders>>> GetOrders()
-         {
-             return await _context.Orders.ToListAsync();
-
-         }
-
-      /*  [HttpGet]
-        public IActionResult GetOrders()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrders()
         {
-            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
-        }*/
+            return await _context.Orders.ToListAsync();
+        }
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
@@ -91,7 +84,6 @@ namespace OrderApi.Controllers
             _context.Orders.Add(orders);
             await _context.SaveChangesAsync();
 
-            //   return CreatedAtAction("GetOrders", new { id = orders.Id }, orders);
             return Ok();
         }
 

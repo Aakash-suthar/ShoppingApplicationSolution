@@ -30,6 +30,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Index()
         {
             /*return View(await _context.Orders.ToListAsync());*/
+            List<Orders> ol;
             var token = await HttpContext.GetTokenAsync("access_token");
             using (var client = new HttpClient())
             {
@@ -37,11 +38,20 @@ namespace WebApp.Controllers
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", token);
                 var data = await (await client.GetAsync($"https://localhost:44321/api/orders")).Content.ReadAsStringAsync();
-                List<Orders> ol = JsonConvert.DeserializeObject<List<Orders>>(data);
-                return View(ol);
+                ol = JsonConvert.DeserializeObject<List<Orders>>(data);
+                string id = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
+                ol = ol.Where(p => p.Userid == id).ToList();
+
 
             }
-        }
+            using (var client = new HttpClient())
+             {
+                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
+                List<Product> pl = JsonConvert.DeserializeObject<List<Product>>(data);
+                ViewBag.productlist = pl;
+                return View(ol);
+            }
+            }
 
         // GET: Orders/Details/5
         [Authorize]
@@ -66,15 +76,6 @@ namespace WebApp.Controllers
                 return View(order);
 
             }
-
-            /* var orders = await _context.Orders
-                 .FirstOrDefaultAsync(m => m.Id == id);
-             if (orders == null)
-             {
-                 return NotFound();
-             }
-
-             return View(orders);*/
         }
 
         // GET: Orders/Create
@@ -87,12 +88,6 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Productid,Quantity,Totalcost,Ordertime,Orderstatus")] Orders orders)
         {
-            /* if (ModelState.IsValid)
-             {
-                 _context.Add(orders);
-                 await _context.SaveChangesAsync();
-                 return RedirectToAction(nameof(Index));
-             }*/
             var token = await HttpContext.GetTokenAsync("access_token");
             using (var client = new HttpClient())
             {
@@ -131,9 +126,6 @@ namespace WebApp.Controllers
             return View(orders);
         }
 
-        // POST: Orders/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Productid,Quantity,Totalcost,Ordertime,Orderstatus")] Orders orders)
@@ -174,9 +166,6 @@ namespace WebApp.Controllers
                 return NotFound();
             }
 
-            /* var orders = await _context.Orders
-                 .FirstOrDefaultAsync(m => m.Id == id);*/
-
             using (var client = new HttpClient())
             {
                 var token = await HttpContext.GetTokenAsync("access_token");
@@ -206,15 +195,9 @@ namespace WebApp.Controllers
                 var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
                  new AuthenticationHeaderValue("Bearer", token);
-                var data = await (await client.GetAsync($"https://localhost:44321/api/orders")).Content.ReadAsStringAsync();
-                List<Orders> ol = JsonConvert.DeserializeObject<List<Orders>>(data);
-                Orders order = ol.Find(m => m.Id == id);
-                /*  var orders = await _context.Orders.FindAsync(id);
-              _context.Orders.Remove(orders);
-              await _context.SaveChangesAsync();*/
 
-                client.BaseAddress = new Uri("https://localhost:44321/api/orders");
-                var deleteTask = client.DeleteAsync("/"+id.ToString());
+                client.BaseAddress = new Uri("https://localhost:44321/api/");
+                var deleteTask = client.DeleteAsync("orders/" + id.ToString());
                 deleteTask.Wait();
                 var result = deleteTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -223,7 +206,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    return View(order);
+                    return RedirectToAction("Index");
                 }
             }
         }

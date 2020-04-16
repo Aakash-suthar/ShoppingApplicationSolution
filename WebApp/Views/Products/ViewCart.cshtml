@@ -14,6 +14,7 @@
         {
             <div class="col-lg-3" style="margin:5px;background-color:palegreen">
                 <form asp-action="Order">
+                    <input type="hidden" name="counter" value="@item.id" />
                     <input type="hidden" name="id" value="@item.product.Id" />
                     <input type="hidden" name="quans" value="@item.Quantitys" />
                     <input type="hidden" name="tp" value="@item.totalprice" />

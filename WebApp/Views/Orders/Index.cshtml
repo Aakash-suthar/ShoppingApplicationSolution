@@ -1,20 +1,18 @@
 ﻿@model IEnumerable<WebApp.Models.Orders>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Orders";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Productid)
+            </th>
+            <th>
+                    @Html.Display("ProductName")
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -32,10 +30,20 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Productid)
+            </td>
+            <td>
+                @foreach (Product p in (IEnumerable<Product>)ViewBag.productlist)
+                {
+                    @if (p.Id == item.Productid)
+                    {
+                        @p.Productname
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
@@ -55,6 +63,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Cancel</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

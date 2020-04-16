@@ -8,8 +8,8 @@ namespace OrderApi.Model
     {
       /*  public shoppingdbContext()
         {
-        }*/
-
+        }
+*/
         public shoppingdbContext(DbContextOptions<shoppingdbContext> options)
             : base(options)
         {
@@ -47,6 +47,10 @@ namespace OrderApi.Model
                 entity.Property(e => e.Totalcost)
                     .HasColumnName("totalcost")
                     .HasColumnType("decimal(18, 0)");
+
+                entity.Property(e => e.Userid)
+                    .HasColumnName("userid")
+                    .HasMaxLength(450);
             });
 
             OnModelCreatingPartial(modelBuilder);

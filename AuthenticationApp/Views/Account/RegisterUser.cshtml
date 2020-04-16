@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "RegisterUser";
+}
+
+<h2>Register</h2>
+<br />
+
+<p>
+    @if (ViewBag.error != null)
+    {
+        @ViewBag.error
+
+        @foreach (var r in ViewBag.errors)
+        {
+
+            
+                @r.Description
+            
+         }
+     }
+</p>
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Register" asp-controller="Account">
+                    <div class="form-group">
+                        <label name="username" class="control-label"></label>
+                        <input name="username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label name="email" class="control-label"></label>
+                        <input name="email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label name="password" class="control-label"></label>
+                        <input name="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label name="phonenumber" class="control-label"></label>
+                        <input name="phonenumber" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>

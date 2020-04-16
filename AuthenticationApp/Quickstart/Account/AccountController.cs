@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace IdentityServer4.Quickstart.UI
 {
@@ -46,6 +47,62 @@ namespace IdentityServer4.Quickstart.UI
             _schemeProvider = schemeProvider;
             _events = events;
         }
+
+        [HttpPost]
+        public IActionResult Register()
+        {
+
+            var alice = _userManager.FindByNameAsync(Request.Form["username"]).Result;
+            if (alice == null)
+            {
+                alice = new ApplicationUser
+                {
+                    UserName = Request.Form["username"],
+                    NormalizedUserName = Request.Form["username"],
+                    NormalizedEmail = Request.Form["email"],
+                    Email = Request.Form["email"]
+
+                };
+                var result = _userManager.CreateAsync(alice, Request.Form["password"]).Result;
+                /* result = _userManager.AddClaimsAsync(alice, new Claim[]{
+                         new Claim(JwtClaimTypes.Name, Request.Form["username"]),
+                         new Claim(JwtClaimTypes.GivenName, Request.Form["username"]),
+                         new Claim(JwtClaimTypes.FamilyName, "Unknow"),
+                         new Claim(JwtClaimTypes.Email,Request.Form["email"]),
+                         new Claim(JwtClaimTypes.Role, "user"),
+                         new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                         new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                         new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
+                     }).Result;*/
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(nameof(Login));
+                }
+
+                else {
+
+                    ViewBag.error = "Password required one special character and lenght more than 6.";
+                    ViewBag.errors = result.Errors.ToList();
+
+                
+                    return RedirectToAction(nameof(RegisterUser));
+                }
+              
+            }
+            else
+            {
+                ViewBag.error = "Username already exist or password required one special character and lenght more than 6.";
+                return RedirectToAction(nameof(RegisterUser));
+            }
+                
+        }
+
+        [HttpGet]
+        public IActionResult RegisterUser()
+        {
+            return View();
+        }
+
 
         /// <summary>
         /// Entry point into the login workflow

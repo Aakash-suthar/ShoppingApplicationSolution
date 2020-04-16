@@ -9,64 +9,15 @@
 
 <p>
     <a asp-action="Create">Create New</a>
-    <a asp-action="ViewCart">Look Cart</a>
-    <a asp-action="Index" asp-controller="Orders">Check Order</a>
+    
 </p>
-@*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Productname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Productdesciption)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imgurl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Productname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Productdesciption)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imgurl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@
 
 <div class="col-lg-12">
     <div class="row">
         @foreach (var item in Model)
         {
        
-        <div class="col-lg-2" style="margin:5px;height:200px;background-color:cornflowerblue">
+        <div class="col-lg-2" style="margin:5px;height:240px;background-color:cornflowerblue">
             <a asp-action="Details" asp-route-id="@item.Id" style=" all:unset;cursor:pointer">
                 <div style="text-align:center;">
                     <h4 style="padding-top:40px">
