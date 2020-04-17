@@ -39,9 +39,10 @@ namespace WebApp.Controllers
                 new AuthenticationHeaderValue("Bearer", token);
                 var data = await (await client.GetAsync($"https://localhost:44321/api/orders")).Content.ReadAsStringAsync();
                 ol = JsonConvert.DeserializeObject<List<Orders>>(data);
-                string id = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
-                ol = ol.Where(p => p.Userid == id).ToList();
-
+                if (User.Claims.Where(p => p.Type == "name").Select(p => p.Value).Single() != "admin") {
+                    string id = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
+                    ol = ol.Where(p => p.Userid == id).ToList();
+                }
 
             }
             using (var client = new HttpClient())

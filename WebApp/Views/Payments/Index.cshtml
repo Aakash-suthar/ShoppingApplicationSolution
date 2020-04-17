@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Orderid)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Paymenttime)
             </th>
             <th>
@@ -28,9 +25,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orderid)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Paymenttime)
             </td>

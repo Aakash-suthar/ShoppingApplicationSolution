@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using PaymentApi.model;
+using PaymentApi.Model;
 
 namespace PaymentApi.Controllers
 {
@@ -83,8 +83,8 @@ namespace PaymentApi.Controllers
         {
             _context.Payment.Add(payment);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
+            /* return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);*/
+            return payment;
         }
 
         // DELETE: api/Payments/5

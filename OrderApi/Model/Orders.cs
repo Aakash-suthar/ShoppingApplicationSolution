@@ -12,5 +12,8 @@ namespace OrderApi.Model
         public DateTime? Ordertime { get; set; }
         public bool? Orderstatus { get; set; }
         public string Userid { get; set; }
+        public int? Paymentid { get; set; }
+        public string Email { get; set; }
+        public string Adress { get; set; }
     }
 }

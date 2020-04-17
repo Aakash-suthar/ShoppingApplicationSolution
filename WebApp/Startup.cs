@@ -46,8 +46,8 @@ namespace WebApp
            options.Scope.Add("profile");
            options.Scope.Add("productapi");
                options.Scope.Add("orderapi");
-        /*       options.Scope.Add("paymentapi");
-               options.Scope.Add("shipmentapi");*/
+               options.Scope.Add("paymentapi");
+              // options.Scope.Add("shipmentapi");
                //     options.Scope.Add("role");
                options.Scope.Add("offline_access");
                options.SaveTokens = true;

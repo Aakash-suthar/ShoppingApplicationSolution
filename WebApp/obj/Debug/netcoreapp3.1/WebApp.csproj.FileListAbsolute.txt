@@ -196,3 +196,4 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcorea
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\Cart.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\ViewCart.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\Order.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\Payment.cshtml.g.cs

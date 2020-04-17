@@ -2,14 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace PaymentApi.model
+namespace PaymentApi.Model
 {
     public partial class shoppingdbContext : DbContext
     {
-        /*public shoppingdbContext()
+      /*  public shoppingdbContext()
         {
-        }*/
-
+        }
+*/
         public shoppingdbContext(DbContextOptions<shoppingdbContext> options)
             : base(options)
         {
@@ -33,7 +33,9 @@ namespace PaymentApi.model
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Orderid).HasColumnName("orderid");
+                entity.Property(e => e.Creditnumber)
+                    .HasColumnName("creditnumber")
+                    .HasMaxLength(450);
 
                 entity.Property(e => e.Paymentstatus).HasColumnName("paymentstatus");
 

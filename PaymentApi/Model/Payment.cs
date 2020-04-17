@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PaymentApi.model
+namespace PaymentApi.Model
 {
     public partial class Payment
     {
         public int Id { get; set; }
-        public int? Orderid { get; set; }
         public DateTime? Paymenttime { get; set; }
         public bool? Paymentstatus { get; set; }
+        public string Creditnumber { get; set; }
     }
 }

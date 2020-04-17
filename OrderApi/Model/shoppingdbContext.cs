@@ -6,10 +6,10 @@ namespace OrderApi.Model
 {
     public partial class shoppingdbContext : DbContext
     {
-      /*  public shoppingdbContext()
+    /*    public shoppingdbContext()
         {
-        }
-*/
+        }*/
+
         public shoppingdbContext(DbContextOptions<shoppingdbContext> options)
             : base(options)
         {
@@ -33,12 +33,22 @@ namespace OrderApi.Model
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.Adress)
+                    .HasColumnName("adress")
+                    .HasMaxLength(256);
+
+                entity.Property(e => e.Email)
+                    .HasColumnName("email")
+                    .HasMaxLength(256);
+
                 entity.Property(e => e.Orderstatus).HasColumnName("orderstatus");
 
                 entity.Property(e => e.Ordertime)
                     .HasColumnName("ordertime")
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Paymentid).HasColumnName("paymentid");
 
                 entity.Property(e => e.Productid).HasColumnName("productid");
 

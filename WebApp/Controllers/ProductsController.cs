@@ -50,19 +50,49 @@ namespace WebApp.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult> Order()
+        public ActionResult Payment()
         {
-          
-             var token = await HttpContext.GetTokenAsync("access_token");
+            ViewBag.cartid = Convert.ToInt32(Request.Form["counter"]);
+            return View();
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> Paymentpost()
+        {
+            Orders o = new Orders();
+            Cart ct;
+            Payment p;
+            var token = await HttpContext.GetTokenAsync("access_token");
+
             using (var client = new HttpClient())
             {
-                Orders o = new Orders();
-                o.Productid = Convert.ToInt32(Request.Form["id"]);
-                o.Quantity = Convert.ToInt32(Request.Form["quans"]);
-                o.Totalcost = Convert.ToDecimal(Request.Form["tp"]);
+                p = new Payment();
+                p.Paymentstatus = true;
+                p.Creditnumber = Request.Form["creditnumber"];
+
+                client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+                client.BaseAddress = new Uri("https://localhost:44322/api/payments");
+                var postTask = await client.PostAsJsonAsync<Payment>("payments", p);
+                var result = await postTask.Content.ReadAsStringAsync();
+
+                p = JsonConvert.DeserializeObject<Payment>(result);
+
+            }
+            using (var client = new HttpClient())
+            {
+                int counterid = Convert.ToInt32(Request.Form["counter"]);
+                ct = c.Where(p => p.id == counterid).Single();
+
+                o.Productid = ct.product.Id;
+                o.Quantity = ct.Quantitys;
+                o.Totalcost = ct.totalprice;
                 o.Userid = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
-                    o.Orderstatus = false;
-                
+                o.Orderstatus = true;
+                o.Paymentid = p.Id;
+                o.Adress = Request.Form["adress"];
+
+
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", token);
                 client.BaseAddress = new Uri("https://localhost:44321/api/orders");
@@ -71,8 +101,6 @@ namespace WebApp.Controllers
                 postTask.Wait();
 
                 var result = postTask.Result;
-                int counterid = Convert.ToInt32(Request.Form["counter"]);
-                Cart ct = c.Where(p => p.id == counterid).Single();
                 c.Remove(ct);
                 
                 return RedirectToAction("Index");
@@ -162,10 +190,14 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Create([Bind("Id,Productname,Productdesciption,Price,Quantity,Imgurl")] Product product)
         {
 
+            if (User.Claims.Where(p => p.Type == "name").Select(p => p.Value).Single() != "admin")
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             var token = await HttpContext.GetTokenAsync("access_token");
             using (var client = new HttpClient())
             {
-
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", token);
                 client.BaseAddress = new Uri("https://localhost:44302/api/products");
