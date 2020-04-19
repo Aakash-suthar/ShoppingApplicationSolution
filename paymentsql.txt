@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[payment] (
+    [id]            INT            IDENTITY (0, 1) NOT NULL,
+    [paymenttime]   DATETIME       DEFAULT (getdate()) NULL,
+    [paymentstatus] BIT            NULL,
+    [creditnumber]  NVARCHAR (450) NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
