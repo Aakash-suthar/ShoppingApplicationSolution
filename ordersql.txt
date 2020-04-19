@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[orders] (
+    [id]          INT            IDENTITY (0, 1) NOT NULL,
+    [productid]   INT            NULL,
+    [quantity]    INT            NULL,
+    [totalcost]   DECIMAL (18)   NULL,
+    [ordertime]   DATETIME       DEFAULT (getdate()) NULL,
+    [orderstatus] BIT            NULL,
+    [userid]      NVARCHAR (450) NULL,
+    [paymentid]   INT            NULL,
+    [email]       NVARCHAR (256) NULL,
+    [adress]      NVARCHAR (256) NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    CONSTRAINT [FK_UserOrder] FOREIGN KEY ([userid]) REFERENCES [dbo].[AspNetUsers] ([Id]),
+    FOREIGN KEY ([paymentid]) REFERENCES [dbo].[payment] ([id]),
+    FOREIGN KEY ([productid]) REFERENCES [dbo].[product] ([id])
+);
