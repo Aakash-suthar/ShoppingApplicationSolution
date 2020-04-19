@@ -24,46 +24,20 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
+           
             return View();
         }
 
         [Authorize]
         public IActionResult Login()
         {
+            var r = User.Claims;
             return RedirectToAction(nameof(Index));
         }
         public async Task Logout()
         {
             await HttpContext.SignOutAsync("Cookies");
             await HttpContext.SignOutAsync("oidc");
-        }
-
-        [Authorize]
-        public IActionResult Privacy()
-        {
-            string s;
-            var r = HttpContext.User.Claims;
-            foreach (var t in r)
-            { if (t.Type == "name") {
-                    s = t.Value;
-                } }
-            return View();
-        }
-
-        [Authorize]
-        public async Task<IActionResult> ApiCall()
-        {
-            var token = await HttpContext.GetTokenAsync("access_token");
-            using (var client = new HttpClient())
-            {
-
-                client.DefaultRequestHeaders.Authorization =
-                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var data =await (await client.GetAsync($"https://localhost:44321/api/orders")).Content.ReadAsStringAsync();
-                List<Orders> ol = JsonConvert.DeserializeObject<List<Orders>>(data);
-                return View(ol);
-
-            } 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

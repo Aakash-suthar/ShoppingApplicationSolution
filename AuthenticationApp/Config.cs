@@ -15,6 +15,7 @@ namespace AuthenticationApp
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResources.Email()
             
                 
             };
@@ -59,6 +60,7 @@ namespace AuthenticationApp
                     FrontChannelLogoutUri = "https://localhost:44393/signout-oidc",
                     PostLogoutRedirectUris = { "https://localhost:44393/signout-callback-oidc" },
                      AllowAccessTokensViaBrowser = true,
+                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowOfflineAccess = true,
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,

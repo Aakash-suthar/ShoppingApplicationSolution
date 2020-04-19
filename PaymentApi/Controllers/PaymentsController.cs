@@ -43,47 +43,11 @@ namespace PaymentApi.Controllers
             return payment;
         }
 
-        // PUT: api/Payments/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPayment(int id, Payment payment)
-        {
-            if (id != payment.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(payment).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PaymentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok();
-        }
-
-        // POST: api/Payments
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
             _context.Payment.Add(payment);
             await _context.SaveChangesAsync();
-            /* return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);*/
             return payment;
         }
 

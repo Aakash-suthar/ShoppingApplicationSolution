@@ -43,41 +43,6 @@ namespace OrderApi.Controllers
             return orders;
         }
 
-        // PUT: api/Orders/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrders(int id, Orders orders)
-        {
-            if (id != orders.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(orders).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrdersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Ok();
-        }
-
-        // POST: api/Orders
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Orders>> PostOrders(Orders orders)
         {

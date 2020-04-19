@@ -48,29 +48,23 @@ namespace ProductApi.Controllers
 
         // PUT api/<controller>/5
         [Authorize]
-        [HttpPut("{id}")]
-        public IActionResult PutProducts(int id, Product products)
+        [HttpPut()]
+        public IActionResult PutProducts(Product products)
         {
-            if (id != products.Id)
-            {
-                return BadRequest();
-            }
+            Product p = _context.Product.Find(products.Id);
 
-            _context.Entry(products).State = EntityState.Modified;
-            try
+            if (p != null)
             {
+                p.Productname = products.Productname;
+                p.Productdesciption = products.Productname;
+                p.Quantity = products.Quantity;
+                p.Imgurl = products.Imgurl;
+                p.Price = products.Price;
+
                 _context.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+            else { 
+                return BadRequest();
             }
 
             return Ok();

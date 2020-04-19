@@ -43,7 +43,8 @@ namespace WebApp
                options.GetClaimsFromUserInfoEndpoint = true;
            // options.Scope.Add("scope_used_for_hybrid_flow");
            options.Scope.Add("openid");
-           options.Scope.Add("profile");
+               options.Scope.Add("email");
+               options.Scope.Add("profile");
            options.Scope.Add("productapi");
                options.Scope.Add("orderapi");
                options.Scope.Add("paymentapi");

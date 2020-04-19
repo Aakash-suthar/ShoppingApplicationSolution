@@ -21,18 +21,6 @@ namespace WebApp.Controllers
         static int counter = 0;
         static List<Cart> c = new List<Cart>();
 
-        #region dummy data
-        /* List<Product> oltp = new List<Product>() {
-             new Product(){ Id=1, Productname="akash",Price=23, Productdesciption="jqwvhdbqbdjqvwdjqvjwdvqjvwjdq",Imgurl="kqwbjdqwdqbwdqwdkqbwd",Quantity=3 },
-             new Product(){ Id=2, Productname="akash2",Price=23, Productdesciption="jqwvhdbqbdjqvwdjqvjwdvqjvwjdq",Imgurl="kqwbjdqwdqbwdqwdkqbwd",Quantity=3 },
-             new Product(){ Id=3, Productname="akash3" ,Price=53, Productdesciption="jqwvhdbqbdjqvwdjqvjwdvqjvwjdq",Imgurl="kqwbjdqwdqbwdqwdkqbwd",Quantity=3},
-             new Product(){ Id=1, Productname="akash4",Price=26 , Productdesciption="jqwvhdbqbdjqvwdjqvjwdvqjvwjdq",Imgurl="kqwbjdqwdqbwdqwdkqbwd",Quantity=3},
-             new Product(){ Id=2, Productname="akash5",Price=27 , Productdesciption="jqwvhdbqbdjqvwdjqvjwdvqjvwjdq",Imgurl="kqwbjdqwdqbwdqwdkqbwd",Quantity=3},
-             new Product(){ Id=3, Productname="akash6" ,Price=29, Productdesciption="jqwvhdbqbdjqvwdjqvjwdvqjvwjdq",Imgurl="kqwbjdqwdqbwdqwdkqbwd",Quantity=3},
-
-             };*/
-        #endregion
-
         private readonly WebAppContext _context;
 
         public ProductsController(WebAppContext context)
@@ -79,7 +67,7 @@ namespace WebApp.Controllers
                 p = JsonConvert.DeserializeObject<Payment>(result);
 
             }
-            using (var client = new HttpClient())
+                using (var client = new HttpClient())
             {
                 int counterid = Convert.ToInt32(Request.Form["counter"]);
                 ct = c.Where(p => p.id == counterid).Single();
@@ -215,6 +203,10 @@ namespace WebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
+            if (User.Claims.Where(p => p.Type == "name").Select(p => p.Value).Single() != "admin")
+            {
+                return RedirectToAction(nameof(Index));
+            }
             if (id == null)
             {
                 return NotFound();
@@ -242,19 +234,22 @@ namespace WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Productname,Productdesciption,Price,Quantity,Imgurl")] Product product)
         {
+            if (User.Claims.Where(p => p.Type == "name").Select(p => p.Value).Single() != "admin")
+            {
+                return RedirectToAction(nameof(Index));
+            }
             if (id != product.Id)
             {
                 return NotFound();
             }
 
-         
             using (var client = new HttpClient())
             {
                 var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
                new AuthenticationHeaderValue("Bearer", token);
-                client.BaseAddress = new Uri("https://localhost:44302/api/products/" + id);
-                var putTask =  client.PutAsJsonAsync<Product>("product", product);
+                client.BaseAddress = new Uri("https://localhost:44302/api/products");
+                var putTask =  client.PutAsJsonAsync<Product>("products", product);
                 putTask.Wait();
                 var result = putTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -268,51 +263,6 @@ namespace WebApp.Controllers
 
         }
 
-        // GET: Products/Delete/5
-        [Authorize]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            using (var client = new HttpClient())
-            {
-                var token = await HttpContext.GetTokenAsync("access_token");
-                client.DefaultRequestHeaders.Authorization =
-                 new AuthenticationHeaderValue("Bearer", token);
-                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
-                List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
-                var product = ol.Find(m => m.Id == id);
-                if (product == null)
-                {
-                    return NotFound();
-                }
-
-                return View(product);
-            }
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            using (var client = new HttpClient())
-            {
-                var token = await HttpContext.GetTokenAsync("access_token");
-                client.DefaultRequestHeaders.Authorization =
-                 new AuthenticationHeaderValue("Bearer", token);
-                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
-                List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
-                // return View(ol);
-                var product = ol.Find(m => m.Id == id);
-            }
-           
-            return RedirectToAction(nameof(Index));
-        }
 
         private bool ProductExists(int id)
         {
