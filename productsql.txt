@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[product] (
+    [id]                INT           IDENTITY (0, 1) NOT NULL,
+    [productname]       VARCHAR (30)  NULL,
+    [productdesciption] VARCHAR (400) NULL,
+    [price]             DECIMAL (18)  NULL,
+    [quantity]          INT           NULL,
+    [imgurl]            VARCHAR (200) NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
