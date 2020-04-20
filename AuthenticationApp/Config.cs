@@ -51,10 +51,10 @@ namespace AuthenticationApp
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                new ApiResource("productapi", "My API #1"),
-                new ApiResource("orderapi", "My API #2"),
-                new ApiResource("paymentapi", "My API #3"),
-                new ApiResource("shipmentapi", "My API #4"),
+                new ApiResource("productapi", "Product"),
+                new ApiResource("orderapi", "Order"),
+                new ApiResource("paymentapi", "Payment"),
+                new ApiResource("shipmentapi", "Shipment"),
             };
 
 
