@@ -44,11 +44,11 @@ namespace PaymentApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Payment>> PostPayment(Payment payment)
+        public async Task<ActionResult<Payment>> PostPayment(Payment payments)
         {
-            _context.Payment.Add(payment);
+            _context.Payment.Add(payments);
             await _context.SaveChangesAsync();
-            return payment;
+            return payments;
         }
 
         // DELETE: api/Payments/5

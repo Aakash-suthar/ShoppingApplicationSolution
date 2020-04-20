@@ -51,6 +51,7 @@ namespace WebApp.Controllers
             Cart ct;
             Payment p;
             var token = await HttpContext.GetTokenAsync("access_token");
+          
 
             using (var client = new HttpClient())
             {
@@ -77,7 +78,9 @@ namespace WebApp.Controllers
                 o.Totalcost = ct.totalprice;
                 o.Userid = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
                 o.Orderstatus = true;
+                o.Email = User.Claims.Where(p => p.Type == "email").Select(p => p.Value).Single();
                 o.Paymentid = p.Id;
+
                 o.Adress = Request.Form["adress"];
 
 

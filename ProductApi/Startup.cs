@@ -38,7 +38,7 @@ namespace ProductApi
             services.AddAuthentication("Bearer")
             .AddIdentityServerAuthentication(options =>
             {
-                options.Authority = "http://localhost:5000";
+                options.Authority = Configuration.GetConnectionString("authentication");
                 options.RequireHttpsMetadata = false;
 
                 options.ApiName = "productapi";

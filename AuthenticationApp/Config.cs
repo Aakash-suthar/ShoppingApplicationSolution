@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
@@ -10,15 +11,41 @@ namespace AuthenticationApp
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> Ids =>
-            new IdentityResource[]
+        /*    public static IEnumerable<IdentityResource> Ids =>
+                new IdentityResource[]
+                {
+                    new IdentityResources.OpenId(),
+                    new IdentityResources.Profile(),
+                    new IdentityResources.Email(),
+                    customProfile  = new IdentityResource(
+                        name: "other",
+                        displayName: "other2",
+                       claimTypes : new [] {
+                             JwtClaimTypes.PhoneNumber,
+                            JwtClaimTypes.Email
+                            }
+                        )
+
+
+                };*/
+
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            var customProfile = new IdentityResource(
+                name: "custom",
+                displayName: "Custom",
+                claimTypes: new[] { 
+                JwtClaimTypes.PhoneNumber,
+                JwtClaimTypes.Email
+                });
+
+            return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email()
-            
-                
+              new IdentityResources.Email(),
             };
+        }
 
 
         public static IEnumerable<ApiResource> Apis =>
@@ -43,7 +70,7 @@ namespace AuthenticationApp
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret("secret".Sha256()) },
                     AllowAccessTokensViaBrowser = true,
-                    AllowedScopes = { "productapi", "orderapi", "paymentapi", "shipmentapi"}
+                    AllowedScopes = { "productapi", "orderapi", "paymentapi", "shipmentapi", "customProfile" }
                 },
 
                 // MVC client using code flow + pkce
@@ -60,13 +87,14 @@ namespace AuthenticationApp
                     FrontChannelLogoutUri = "https://localhost:44393/signout-oidc",
                     PostLogoutRedirectUris = { "https://localhost:44393/signout-callback-oidc" },
                      AllowAccessTokensViaBrowser = true,
+                     AlwaysSendClientClaims = true,
                      AlwaysIncludeUserClaimsInIdToken = true,
                     AllowOfflineAccess = true,
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        "orderapi","paymentapi","shipmentapi","productapi", }
+                        "orderapi","paymentapi","shipmentapi","productapi" }
                 },
 
                 // SPA client using code flow + pkce
