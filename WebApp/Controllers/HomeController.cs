@@ -25,13 +25,13 @@ namespace WebApp.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return RedirectToAction("Index","Products");
         }
 
         [Authorize]
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
           //  var r = User.Claims;
 

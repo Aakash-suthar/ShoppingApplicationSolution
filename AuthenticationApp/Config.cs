@@ -77,7 +77,7 @@ namespace AuthenticationApp
                 new Client
                 {
                     ClientId = "code",
-                    ClientName = "MVC Client",
+                    ClientName = "Shopping App",
 
                     AllowedGrantTypes = GrantTypes.Hybrid,
 
@@ -96,6 +96,31 @@ namespace AuthenticationApp
                         IdentityServerConstants.StandardScopes.Email,
                         "orderapi","paymentapi","shipmentapi","productapi" }
                 },
+
+
+                 new Client
+                {
+                    ClientId = "shipmentapp",
+                    ClientName = "Shipment Agent",
+
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+
+                    ClientSecrets = { new Secret("shipment".Sha256()) },
+
+                    RedirectUris = { "https://localhost:44314/signin-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:44314/signout-oidc",
+                    PostLogoutRedirectUris = { "https://localhost:44314/signout-callback-oidc" },
+                     AllowAccessTokensViaBrowser = true,
+                     AlwaysSendClientClaims = true,
+                     AlwaysIncludeUserClaimsInIdToken = true,
+                    AllowOfflineAccess = true,
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        "orderapi","paymentapi","shipmentapi","productapi" }
+                },
+
 
                 // SPA client using code flow + pkce
                 new Client

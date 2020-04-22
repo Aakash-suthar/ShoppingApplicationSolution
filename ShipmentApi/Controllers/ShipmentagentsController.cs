@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using ShipmentApi.model;
 
@@ -12,7 +12,7 @@ namespace ShipmentApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+    [Authorize]
     public class ShipmentagentsController : ControllerBase
     {
         private readonly shoppingdbContext _context;
@@ -46,7 +46,6 @@ namespace ShipmentApi.Controllers
         // PUT: api/Shipmentagents/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShipmentagent(int id, Shipmentagent shipmentagent)
         {
@@ -79,18 +78,16 @@ namespace ShipmentApi.Controllers
         // POST: api/Shipmentagents
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
-        [Authorize]
         [HttpPost]
-        public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagent)
+        public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagents)
         {
-            _context.Shipmentagent.Add(shipmentagent);
+            _context.Shipmentagent.Add(shipmentagents);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetShipmentagent", new { id = shipmentagent.Id }, shipmentagent);
+            return Ok();
         }
 
         // DELETE: api/Shipmentagents/5
-        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Shipmentagent>> DeleteShipmentagent(int id)
         {

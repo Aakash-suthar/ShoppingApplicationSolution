@@ -6,10 +6,10 @@ namespace ShipmentApi.model
 {
     public partial class shoppingdbContext : DbContext
     {
-      /*  public shoppingdbContext()
+       /* public shoppingdbContext()
         {
-        }*/
-
+        }
+*/
         public shoppingdbContext(DbContextOptions<shoppingdbContext> options)
             : base(options)
         {
@@ -33,6 +33,10 @@ namespace ShipmentApi.model
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.DeliveryGuy)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Deliverydate)
                     .HasColumnName("deliverydate")
                     .HasColumnType("datetime");
@@ -43,6 +47,11 @@ namespace ShipmentApi.model
                     .HasColumnName("orderplacedate")
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Statuss)
+                    .HasColumnName("statuss")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
