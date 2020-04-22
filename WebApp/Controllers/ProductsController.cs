@@ -13,6 +13,8 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Queue;
 
 namespace WebApp.Controllers
 {
@@ -94,8 +96,19 @@ namespace WebApp.Controllers
                 var result = postTask.Result;
                 c.Remove(ct);
                 
-                return RedirectToAction("Index");
+
+
+                
             }
+            var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+            CloudQueue queue = queueClient.GetQueueReference("demoqueue");
+            await queue.CreateIfNotExistsAsync();
+            var me = JsonConvert.SerializeObject(o);
+            await queue.AddMessageAsync(new CloudQueueMessage(me));
+            return RedirectToAction(nameof(Index));
+
         }
 
         [HttpGet]

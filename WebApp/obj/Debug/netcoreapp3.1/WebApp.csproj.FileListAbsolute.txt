@@ -186,9 +186,15 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcorea
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagents\Index.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\WebApp.csproj.CoreCompileInputs.cache
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\WebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\Cart.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\ViewCart.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\Order.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Products\Payment.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\System.Private.ServiceModel.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\System.ServiceModel.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.Storage.Common.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.Storage.Queue.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\WebApp.csproj.CoreCompileInputs.cache
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\WebApp.MvcApplicationPartsAssemblyInfo.cache

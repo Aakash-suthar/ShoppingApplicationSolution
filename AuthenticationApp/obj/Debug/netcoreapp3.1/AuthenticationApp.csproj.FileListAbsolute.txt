@@ -123,9 +123,6 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Deb
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.csproj.CoreCompileInputs.cache
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
@@ -205,3 +202,6 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Deb
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\AspNetUsers\Index.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\Account\RegisterUser.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.csproj.CoreCompileInputs.cache
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.MvcApplicationPartsAssemblyInfo.cache

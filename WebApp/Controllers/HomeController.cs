@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Queue;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WebApp.Models;
@@ -23,10 +25,9 @@ namespace WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-           
-            return View();
+            return RedirectToAction("Index","Products");
         }
 
         [Authorize]
