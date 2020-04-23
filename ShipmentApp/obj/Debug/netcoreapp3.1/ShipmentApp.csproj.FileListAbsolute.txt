@@ -170,5 +170,7 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\net
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\ShipmentApp.csproj.CoreCompileInputs.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\ShipmentApp.MvcApplicationPartsAssemblyInfo.cache

@@ -195,11 +195,6 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Deb
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\AspNetUsers\Create.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\AspNetUsers\Delete.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\AspNetUsers\Details.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\AspNetUsers\Edit.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\AspNetUsers\Index.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\Razor\Views\Account\RegisterUser.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\AuthenticationApp\obj\Debug\netcoreapp3.1\AuthenticationApp.csproj.CoreCompileInputs.cache

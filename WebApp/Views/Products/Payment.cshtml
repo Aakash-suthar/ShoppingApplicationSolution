@@ -14,13 +14,13 @@
             <input type="hidden" name="counter" value="@ViewBag.cartid" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Creditnumber" class="control-label"></label>
+                <label asp-for="Creditnumber" class="control-label">Creditnumber :</label>
                 <input asp-for="Creditnumber" class="form-control" />
                 <span asp-validation-for="Creditnumber" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label name="adress" class="control-label"></label>
+                <label name="adress" class="control-label">Address : </label>
                 <textarea rows="3" name="adress" class="form-control"></textarea>
             </div>
             <div class="form-group">

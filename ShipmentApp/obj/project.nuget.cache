@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "j/1LIeFzJCorClqem9Zc1ucBo0/qKrp/sKt7hCh7KaIQPIgH0JAZPrZspbOwp1hVPdk3Kc/BKyBcxkINGsQ7mw==",
+  "dgSpecHash": "Axbbytf34S/CIIzwDt9Fp8h7VDK5v07yGMB9EzGf5XvaYBqVuQsvTUzDp9hQnAtOmyaDMx+v1tgED9ExFXwiRw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Vishal-PC\\Desktop\\ShoppingApplicationSolution\\ShipmentApp\\ShipmentApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\identitymodel\\4.1.1\\identitymodel.4.1.1.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\identityserver4\\3.1.2\\identityserver4.3.1.2.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\identityserver4.storage\\3.1.2\\identityserver4.storage.3.1.2.nupkg.sha512",
+    "C:\\Users\\Vishal-PC\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
@@ -86,6 +87,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\netstandard.library\\2.0.1\\netstandard.library.2.0.1.nupkg.sha512",
     "C:\\Users\\Vishal-PC\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

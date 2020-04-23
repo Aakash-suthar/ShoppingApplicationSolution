@@ -31,6 +31,7 @@ namespace WebApp.Controllers
         {
             /*return View(await _context.Orders.ToListAsync());*/
             List<Orders> ol;
+            List<Shipmentagent> sg;
             var token = await HttpContext.GetTokenAsync("access_token");
             using (var client = new HttpClient())
             {
@@ -46,6 +47,16 @@ namespace WebApp.Controllers
 
             }
             using (var client = new HttpClient())
+            {
+
+                client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+                var data = await (await client.GetAsync($"https://localhost:44332/api/Shipmentagents")).Content.ReadAsStringAsync();
+                sg = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
+                ViewBag.sglist = sg;
+            }
+
+                using (var client = new HttpClient())
              {
                 var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
                 List<Product> pl = JsonConvert.DeserializeObject<List<Product>>(data);
@@ -78,39 +89,6 @@ namespace WebApp.Controllers
 
             }
         }
-
-        // GET: Orders/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Productid,Quantity,Totalcost,Ordertime,Orderstatus")] Orders orders)
-        {
-            var token = await HttpContext.GetTokenAsync("access_token");
-            using (var client = new HttpClient())
-            {
-
-                client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
-                client.BaseAddress = new Uri("https://localhost:44321/api/orders");
-
-                //HTTP POST
-                var postTask = client.PostAsJsonAsync<Orders>("order", orders);
-                postTask.Wait();
-
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index");
-                }
-                ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-            }
-            return View(orders);
-        }
-
 
         // GET: Orders/Delete/5
         public async Task<IActionResult> Delete(int? id)
