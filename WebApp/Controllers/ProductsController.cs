@@ -20,9 +20,14 @@ namespace WebApp.Controllers
 {
     public class ProductsController : Controller
     {
-        static string producturi = "https://localhost:44302/api/products";
-        static string orderuri = "https://localhost:44321/api/orders";
-        static string paymenturi= "https://localhost:44322/api/payments";
+        /*   static string producturi = "https://localhost:44302/api/products";
+           static string orderuri = "https://localhost:44321/api/orders";
+           static string paymenturi= "https://localhost:44322/api/payments";*/
+
+        static string producturi = "https://productapi2.azurewebsites.net/api/products";
+        static string orderuri = "https://orderapi0.azurewebsites.net/api/orders";
+        static string paymenturi = "https://paymentapi2.azurewebsites.net/api/payments";
+
         static int counter = 0;
         static List<Cart> c = new List<Cart>();
 
@@ -133,7 +138,7 @@ namespace WebApp.Controllers
         {
             using (var client = new HttpClient())
             {
-                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
+                var data = await (await client.GetAsync(producturi)).Content.ReadAsStringAsync();
                 List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
                 Product product = ol.Find(m => m.Id == Convert.ToInt32(Request.Form["id"]));
                 product.Id = Convert.ToInt32(Request.Form["id"]);

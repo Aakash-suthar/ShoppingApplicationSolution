@@ -17,9 +17,12 @@ namespace WebApp.Controllers
 {
     [Authorize]
     public class OrdersController : Controller
-    {
+    {/*
         static string producturi = "https://localhost:44302/api/products";
-        static string orderuri = "https://localhost:44321/api/orders";
+        static string orderuri = "https://localhost:44321/api/orders";*/
+
+        static string producturi = "https://productapi2.azurewebsites.net/api/products";
+        static string orderuri = "https://orderapi0.azurewebsites.net/api/orders";
         static string shipmenturi = "https://localhost:44332/api/Shipmentagents";
 
         private readonly WebAppContext _context;

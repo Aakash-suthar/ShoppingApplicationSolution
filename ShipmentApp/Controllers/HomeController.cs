@@ -25,7 +25,7 @@ namespace ShipmentApp.Controllers
             _logger = logger;
         }
 
-        [Authorize]
+       // [Authorize]
         public async Task<IActionResult> Index()
         {
             var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
@@ -49,10 +49,9 @@ namespace ShipmentApp.Controllers
                /* var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
                  new AuthenticationHeaderValue("Bearer", token);*/
-                client.BaseAddress = new Uri("https://localhost:44332/api/Shipmentagents");
+                client.BaseAddress = new Uri("https://shipmentapi2.azurewebsites.net/api/shipmentagents");
 
-                var postTask = client.PostAsJsonAsync<Shipmentagent>("shipmentagents", s);
-                postTask.Wait();
+                var postTask = await client.PostAsJsonAsync<Shipmentagent>("shipmentagents", s);
             }
              //   queue.DeleteMessage(retrievedMessage);
                 return View();

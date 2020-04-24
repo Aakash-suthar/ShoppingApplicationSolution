@@ -33,7 +33,7 @@ namespace ShipmentApp.Controllers
                /* var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
                  new AuthenticationHeaderValue("Bearer", token);*/
-                var data = await (await client.GetAsync($"https://localhost:44332/api/Shipmentagents")).Content.ReadAsStringAsync();
+                var data = await (await client.GetAsync($"https://shipmentapi2.azurewebsites.net/api/shipmentagents")).Content.ReadAsStringAsync();
                 ol = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
 
             }
