@@ -12,7 +12,7 @@ namespace PaymentApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+  //  [Authorize]
     public class PaymentsController : ControllerBase
     {
         private readonly shoppingdbContext _context;

@@ -20,6 +20,9 @@ namespace WebApp.Controllers
 {
     public class ProductsController : Controller
     {
+        static string producturi = "https://localhost:44302/api/products";
+        static string orderuri = "https://localhost:44321/api/orders";
+        static string paymenturi= "https://localhost:44322/api/payments";
         static int counter = 0;
         static List<Cart> c = new List<Cart>();
 
@@ -52,7 +55,7 @@ namespace WebApp.Controllers
             Orders o = new Orders();
             Cart ct;
             Payment p;
-            var token = await HttpContext.GetTokenAsync("access_token");
+          //  var token = await HttpContext.GetTokenAsync("access_token");
           
 
             using (var client = new HttpClient())
@@ -61,9 +64,9 @@ namespace WebApp.Controllers
                 p.Paymentstatus = true;
                 p.Creditnumber = Request.Form["creditnumber"];
 
-                client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
-                client.BaseAddress = new Uri("https://localhost:44322/api/payments");
+               /* client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);*/
+                client.BaseAddress = new Uri(paymenturi);
                 var postTask = await client.PostAsJsonAsync<Payment>("payments", p);
                 var result = await postTask.Content.ReadAsStringAsync();
 
@@ -86,9 +89,9 @@ namespace WebApp.Controllers
                 o.Adress = Request.Form["adress"];
 
 
-                client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
-                client.BaseAddress = new Uri("https://localhost:44321/api/orders");
+            /*    client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);*/
+                client.BaseAddress = new Uri(orderuri);
 
                 var postTask = client.PostAsJsonAsync<Orders>("orders", o);
                 postTask.Wait();
@@ -116,7 +119,7 @@ namespace WebApp.Controllers
         {
             using (var client = new HttpClient())
             {
-                var data = await(await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
+                var data = await(await client.GetAsync(producturi)).Content.ReadAsStringAsync();
                 List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
                 Product product = ol.Find(m => m.Id == id);
                 product.Id = id;
@@ -152,7 +155,9 @@ namespace WebApp.Controllers
         {
             using (var client = new HttpClient())
             {
-                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
+                 var data = await (await client.GetAsync(producturi)).Content.ReadAsStringAsync();
+                //var data = await (await client.GetAsync($"https://productapi0.azurewebsites.net/api/products")).Content.ReadAsStringAsync();
+
                 List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
                 return View(ol);
             }
@@ -168,7 +173,7 @@ namespace WebApp.Controllers
             }
             using (var client = new HttpClient())
             {
-                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
+                var data = await (await client.GetAsync(producturi)).Content.ReadAsStringAsync();
                 List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
                 // return View(ol);
                 var product = ol.Find(m => m.Id == id);
@@ -199,12 +204,13 @@ namespace WebApp.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var token = await HttpContext.GetTokenAsync("access_token");
+          /*  var token = await HttpContext.GetTokenAsync("access_token");*/
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
-                client.BaseAddress = new Uri("https://localhost:44302/api/products");
+               /* client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);*/
+                client.BaseAddress = new Uri(producturi);
+               // client.BaseAddress = new Uri("https://productapi0.azurewebsites.net/api/products");
 
                 var postTask = client.PostAsJsonAsync<Product>("products", product);
                 postTask.Wait();
@@ -229,10 +235,10 @@ namespace WebApp.Controllers
             }
             using (var client = new HttpClient())
             {
-                var token = await HttpContext.GetTokenAsync("access_token");
+              /*  var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
-                 new AuthenticationHeaderValue("Bearer", token);
-                var data = await (await client.GetAsync($"https://localhost:44302/api/products")).Content.ReadAsStringAsync();
+                 new AuthenticationHeaderValue("Bearer", token);*/
+                var data = await (await client.GetAsync(producturi)).Content.ReadAsStringAsync();
                 List<Product> ol = JsonConvert.DeserializeObject<List<Product>>(data);
                 var product = ol.Find(m => m.Id == id);
                
@@ -261,10 +267,10 @@ namespace WebApp.Controllers
 
             using (var client = new HttpClient())
             {
-                var token = await HttpContext.GetTokenAsync("access_token");
+               /* var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
-               new AuthenticationHeaderValue("Bearer", token);
-                client.BaseAddress = new Uri("https://localhost:44302/api/products");
+               new AuthenticationHeaderValue("Bearer", token);*/
+                client.BaseAddress = new Uri(producturi);
                 var putTask =  client.PutAsJsonAsync<Product>("products", product);
                 putTask.Wait();
                 var result = putTask.Result;
@@ -279,10 +285,5 @@ namespace WebApp.Controllers
 
         }
 
-
-        private bool ProductExists(int id)
-        {
-            return _context.Product.Any(e => e.Id == id);
-        }
     }
 }

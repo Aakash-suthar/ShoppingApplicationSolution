@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Queue;
@@ -24,6 +25,7 @@ namespace ShipmentApp.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
@@ -39,14 +41,14 @@ namespace ShipmentApp.Controllers
             s.Orderid = order.Id;
             s.Orderplacedate = order.Ordertime;
             s.Statuss = "In Transit";
-            s.Deliverydate = order.Ordertime.Value.AddDays(3);
-
+            ///s.Deliverydate = order.Ordertime.Value.AddDays(3);
+            s.Deliverydate = DateTime.Today.AddDays(3);
 
             using (var client = new HttpClient())
             {
-                var token = await HttpContext.GetTokenAsync("access_token");
+               /* var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
-                 new AuthenticationHeaderValue("Bearer", token);
+                 new AuthenticationHeaderValue("Bearer", token);*/
                 client.BaseAddress = new Uri("https://localhost:44332/api/Shipmentagents");
 
                 var postTask = client.PostAsJsonAsync<Shipmentagent>("shipmentagents", s);

@@ -11,7 +11,6 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\net
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\ShipmentApp.TagHelpers.output.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\ShipmentApp.RazorCoreGenerate.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs

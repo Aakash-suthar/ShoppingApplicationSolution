@@ -57,7 +57,7 @@ namespace ShipmentApp
          });
 
 
-
+            services.AddAuthorization();
 
             services.AddDbContext<ShipmentAppContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ShipmentAppContext")));

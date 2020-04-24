@@ -100,7 +100,7 @@ namespace AuthenticationApp
 
                  new Client
                 {
-                    ClientId = "shipmentapp",
+                    ClientId = "shipmentagent",
                     ClientName = "Shipment Agent",
 
                     AllowedGrantTypes = GrantTypes.Hybrid,

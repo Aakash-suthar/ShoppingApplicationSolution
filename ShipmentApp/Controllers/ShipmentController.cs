@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShipmentApi.model;
+using Newtonsoft.Json;
+using ShipmentApp.Data;
+using ShipmentApp.Models;
 
-namespace ShipmentApi.Controllers
+namespace ShipmentApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-   // [Authorize]
-    public class ShipmentagentsController : ControllerBase
-    {
-        private readonly shoppingdbContext _context;
+    [Authorize]
+    public class ShipmentController : ControllerBase
+    {        private readonly ShipmentAppContext _context;
 
-        public ShipmentagentsController(shoppingdbContext context)
+        public ShipmentController(ShipmentAppContext context)
         {
             _context = context;
         }
@@ -26,7 +28,19 @@ namespace ShipmentApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Shipmentagent>>> GetShipmentagent()
         {
-            return await _context.Shipmentagent.ToListAsync();
+            List<Shipmentagent> ol;
+            using (var client = new HttpClient())
+            {
+                var token = await HttpContext.GetTokenAsync("access_token");
+                client.DefaultRequestHeaders.Authorization =
+                 new AuthenticationHeaderValue("Bearer", token);
+                var data = await (await client.GetAsync($"https://localhost:44332/api/Shipmentagents")).Content.ReadAsStringAsync();
+                 ol = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
+                
+            }
+
+
+            return ol;
         }
 
         // GET: api/Shipmentagents/5
@@ -72,19 +86,19 @@ namespace ShipmentApi.Controllers
                 }
             }
 
-            return Ok();
+            return NoContent();
         }
 
         // POST: api/Shipmentagents
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagents)
+        public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagent)
         {
-            _context.Shipmentagent.Add(shipmentagents);
+            _context.Shipmentagent.Add(shipmentagent);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return CreatedAtAction("GetShipmentagent", new { id = shipmentagent.Id }, shipmentagent);
         }
 
         // DELETE: api/Shipmentagents/5
@@ -100,7 +114,7 @@ namespace ShipmentApi.Controllers
             _context.Shipmentagent.Remove(shipmentagent);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return shipmentagent;
         }
 
         private bool ShipmentagentExists(int id)

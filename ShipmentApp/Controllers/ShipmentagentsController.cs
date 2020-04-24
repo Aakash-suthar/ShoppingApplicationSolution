@@ -12,13 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using ShipmentApp.Data;
 using ShipmentApp.Models;
-
 namespace ShipmentApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController] 
     [Authorize]
-    public class ShipmentagentsController : ControllerBase
+    public class ShipmentagentsController : Controller
     {
         private readonly ShipmentAppContext _context;
 
@@ -27,97 +24,140 @@ namespace ShipmentApp.Controllers
             _context = context;
         }
 
-        // GET: api/Shipmentagents
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Shipmentagent>>> GetShipmentagent()
+        // GET: Shipmentagents
+        public async Task<IActionResult> Index()
         {
             List<Shipmentagent> ol;
             using (var client = new HttpClient())
             {
-                var token = await HttpContext.GetTokenAsync("access_token");
+               /* var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
-                 new AuthenticationHeaderValue("Bearer", token);
+                 new AuthenticationHeaderValue("Bearer", token);*/
                 var data = await (await client.GetAsync($"https://localhost:44332/api/Shipmentagents")).Content.ReadAsStringAsync();
-                 ol = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
-                
+                ol = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
+
             }
-
-
-            return ol;
+            return View(ol);
         }
 
-        // GET: api/Shipmentagents/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Shipmentagent>> GetShipmentagent(int id)
+        // GET: Shipmentagents/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            var shipmentagent = await _context.Shipmentagent.FindAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var shipmentagent = await _context.Shipmentagent
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (shipmentagent == null)
             {
                 return NotFound();
             }
 
-            return shipmentagent;
+            return View(shipmentagent);
         }
 
-        // PUT: api/Shipmentagents/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutShipmentagent(int id, Shipmentagent shipmentagent)
+        // GET: Shipmentagents/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Shipmentagents/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Orderid,Orderplacedate,Deliverydate,DeliveryGuy,Statuss")] Shipmentagent shipmentagent)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(shipmentagent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(shipmentagent);
+        }
+
+        // GET: Shipmentagents/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var shipmentagent = await _context.Shipmentagent.FindAsync(id);
+            if (shipmentagent == null)
+            {
+                return NotFound();
+            }
+            return View(shipmentagent);
+        }
+
+        // POST: Shipmentagents/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Orderid,Orderplacedate,Deliverydate,DeliveryGuy,Statuss")] Shipmentagent shipmentagent)
         {
             if (id != shipmentagent.Id)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(shipmentagent).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ShipmentagentExists(id))
+                try
                 {
-                    return NotFound();
+                    _context.Update(shipmentagent);
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!ShipmentagentExists(shipmentagent.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return RedirectToAction(nameof(Index));
             }
-
-            return NoContent();
+            return View(shipmentagent);
         }
 
-        // POST: api/Shipmentagents
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
-        public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagent)
+        // GET: Shipmentagents/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            _context.Shipmentagent.Add(shipmentagent);
-            await _context.SaveChangesAsync();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-            return CreatedAtAction("GetShipmentagent", new { id = shipmentagent.Id }, shipmentagent);
-        }
-
-        // DELETE: api/Shipmentagents/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Shipmentagent>> DeleteShipmentagent(int id)
-        {
-            var shipmentagent = await _context.Shipmentagent.FindAsync(id);
+            var shipmentagent = await _context.Shipmentagent
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (shipmentagent == null)
             {
                 return NotFound();
             }
 
+            return View(shipmentagent);
+        }
+
+        // POST: Shipmentagents/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var shipmentagent = await _context.Shipmentagent.FindAsync(id);
             _context.Shipmentagent.Remove(shipmentagent);
             await _context.SaveChangesAsync();
-
-            return shipmentagent;
+            return RedirectToAction(nameof(Index));
         }
 
         private bool ShipmentagentExists(int id)

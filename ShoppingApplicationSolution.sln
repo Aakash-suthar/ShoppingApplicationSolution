@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationApp", "Authen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{F735791A-EF4C-4490-AE32-7730AF54780F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipmentApp", "ShipmentApp\ShipmentApp.csproj", "{BAD5A99E-4AA4-4AA0-8352-2950D6E9E098}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShipmentApp", "ShipmentApp\ShipmentApp.csproj", "{BAD5A99E-4AA4-4AA0-8352-2950D6E9E098}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

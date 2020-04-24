@@ -37,7 +37,7 @@ namespace ProductApi.Controllers
         }
 
         // POST api/<controller>
-        [Authorize]
+       // [Authorize]
         [HttpPost]
         public ActionResult PostProducts(Product products)
         {
@@ -47,7 +47,7 @@ namespace ProductApi.Controllers
         }
 
         // PUT api/<controller>/5
-        [Authorize]
+      //  [Authorize]
         [HttpPut()]
         public IActionResult PutProducts(Product products)
         {
@@ -71,7 +71,7 @@ namespace ProductApi.Controllers
         }
 
         // DELETE api/<controller>/5
-        [Authorize]
+     //   [Authorize]
         [HttpDelete("{id}")]
         public ActionResult DeleteProducts(int id)
         {
