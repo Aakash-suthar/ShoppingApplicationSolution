@@ -14,3 +14,4 @@ CREATE TABLE [dbo].[orders] (
     FOREIGN KEY ([paymentid]) REFERENCES [dbo].[payment] ([id]),
     FOREIGN KEY ([productid]) REFERENCES [dbo].[product] ([id])
 );
+

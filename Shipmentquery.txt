@@ -1,0 +1,11 @@
+CREATE TABLE [dbo].[shipmentagent] (
+    [id]             INT           IDENTITY (0, 1) NOT NULL,
+    [orderid]        INT           NULL,
+    [orderplacedate] DATETIME      DEFAULT (getdate()) NULL,
+    [deliverydate]   DATETIME      NULL,
+    [DeliveryGuy]    VARCHAR (255) NULL,
+    [statuss]        VARCHAR (255) NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC),
+    FOREIGN KEY ([orderid]) REFERENCES [dbo].[orders] ([id])
+);
+
