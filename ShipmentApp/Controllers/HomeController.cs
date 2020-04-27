@@ -36,27 +36,23 @@ namespace ShipmentApp.Controllers
             var retrievedMessage = queue.GetMessage();
             Orders order = JsonConvert.DeserializeObject<Orders>(retrievedMessage.AsString);
 
-            Shipmentagent s = new Shipmentagent();
+            Shipmentagent3 s = new Shipmentagent3();
             s.DeliveryGuy = "Nimesh";
              s.Orderid = order.Id;
-          //  s.Orderid = 20;
-            //  s.Orderplacedate = order.Ordertime;
             s.Statuss = "In Transit";
-            ///s.Deliverydate = order.Ordertime.Value.AddDays(3);
-          //  s.Deliverydate = DateTime.Today.AddDays(3);
 
             using (var client = new HttpClient())
             {
                 /* var token = await HttpContext.GetTokenAsync("access_token");
                  client.DefaultRequestHeaders.Authorization =
                   new AuthenticationHeaderValue("Bearer", token);*/
-                  client.BaseAddress = new Uri("https://shipmentapi2.azurewebsites.net/api/shipmentagents");
-              //  client.BaseAddress = new Uri("https://localhost:44332/api/shipmentagents");
-                var postTask =  client.PostAsJsonAsync<Shipmentagent>("shipmentagents", s);
-                postTask.Wait();
-                var result = postTask.Result;
+                 client.BaseAddress = new Uri("https://shipmentapinew.azurewebsites.net/api/shipmentagent3");
+              ////  client.BaseAddress = new Uri("https://localhost:44359/api/shipmentagent3");
+                var postTask = await client.PostAsJsonAsync<Shipmentagent3>("shipmentagent3", s);
+                //postTask.Wait();
+              //  var result = postTask.Result;
             }
-             //   queue.DeleteMessage(retrievedMessage);
+                queue.DeleteMessage(retrievedMessage);
                 return View();
         }
 

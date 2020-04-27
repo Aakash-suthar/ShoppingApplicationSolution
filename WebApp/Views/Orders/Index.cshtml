@@ -32,9 +32,6 @@
             <th>
                 Delivery Guy
             </th>
-            <th>
-                Delivery Date
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -73,10 +70,6 @@
                     {
                         @p.Statuss
                     }
-                    else
-                    {
-                        <p>In Process</p>
-                    }
                 }
             </td>
             <td>
@@ -85,23 +78,6 @@
                     @if (p.Orderid == item.Productid)
                     {
                         @p.DeliveryGuy
-                    }
-                    else
-                    {
-                        <p>In Process</p>
-                    }
-                }
-            </td>
-            <td>
-                @foreach (Shipmentagent p in (IEnumerable<Shipmentagent>)ViewBag.sglist)
-                {
-                    @if (p.Orderid == item.Productid)
-                    {
-                        @p.Deliverydate
-                    }
-                    else
-                    {
-                        <p>In Process</p>
                     }
                 }
             </td>

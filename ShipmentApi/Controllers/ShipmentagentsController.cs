@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,6 @@ namespace ShipmentApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize]
     public class ShipmentagentsController : ControllerBase
     {
         private readonly shoppingdbContext _context;
@@ -72,7 +70,7 @@ namespace ShipmentApi.Controllers
                 }
             }
 
-            return Ok();
+            return NoContent();
         }
 
         // POST: api/Shipmentagents
@@ -81,14 +79,9 @@ namespace ShipmentApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagents)
         {
-            try
-            {
-                _context.Shipmentagent.Add(shipmentagents);
-                await _context.SaveChangesAsync();
+            _context.Shipmentagent.Add(shipmentagents);
+            await _context.SaveChangesAsync();
 
-            }
-            catch (Exception e) { 
-            }
             return Ok();
         }
 

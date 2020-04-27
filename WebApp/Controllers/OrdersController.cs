@@ -23,7 +23,7 @@ namespace WebApp.Controllers
 
         static string producturi = "https://productapi2.azurewebsites.net/api/products";
         static string orderuri = "https://orderapi0.azurewebsites.net/api/orders";
-        static string shipmenturi = "https://localhost:44332/api/Shipmentagents";
+        static string shipmenturi = "https://shipmentapinew.azurewebsites.net/api/shipmentagent3";
 
         private readonly WebAppContext _context;
 

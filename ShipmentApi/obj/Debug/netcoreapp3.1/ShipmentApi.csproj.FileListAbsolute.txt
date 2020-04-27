@@ -156,3 +156,4 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApi\bin\Debug\net
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApi\bin\Debug\netcoreapp3.1\IdentityServer4.AccessTokenValidation.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApi\obj\Debug\netcoreapp3.1\ShipmentApi.csproj.CoreCompileInputs.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApi\obj\Debug\netcoreapp3.1\ShipmentApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApi\bin\Debug\netcoreapp3.1\libman.json

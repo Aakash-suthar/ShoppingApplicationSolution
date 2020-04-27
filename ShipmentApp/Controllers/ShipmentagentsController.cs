@@ -27,14 +27,14 @@ namespace ShipmentApp.Controllers
         // GET: Shipmentagents
         public async Task<IActionResult> Index()
         {
-            List<Shipmentagent> ol;
+            List<Shipmentagent3> ol;
             using (var client = new HttpClient())
             {
                /* var token = await HttpContext.GetTokenAsync("access_token");
                 client.DefaultRequestHeaders.Authorization =
                  new AuthenticationHeaderValue("Bearer", token);*/
-                var data = await (await client.GetAsync($"https://shipmentapi2.azurewebsites.net/api/shipmentagents")).Content.ReadAsStringAsync();
-                ol = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
+                var data = await (await client.GetAsync($"https://shipmentapinew.azurewebsites.net/api/shipmentagent3")).Content.ReadAsStringAsync();
+                ol = JsonConvert.DeserializeObject<List<Shipmentagent3>>(data);
 
             }
             return View(ol);
