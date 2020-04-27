@@ -81,9 +81,14 @@ namespace ShipmentApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Shipmentagent>> PostShipmentagent(Shipmentagent shipmentagents)
         {
-            _context.Shipmentagent.Add(shipmentagents);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Shipmentagent.Add(shipmentagents);
+                await _context.SaveChangesAsync();
 
+            }
+            catch (Exception e) { 
+            }
             return Ok();
         }
 

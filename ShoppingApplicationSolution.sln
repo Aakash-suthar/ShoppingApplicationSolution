@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShipmentApp", "ShipmentApp\ShipmentApp.csproj", "{BAD5A99E-4AA4-4AA0-8352-2950D6E9E098}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipmentAgentApi", "ShipmentAgentApi\ShipmentAgentApi.csproj", "{F00EE978-6B36-4B30-8719-CBC29328DD99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BAD5A99E-4AA4-4AA0-8352-2950D6E9E098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAD5A99E-4AA4-4AA0-8352-2950D6E9E098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAD5A99E-4AA4-4AA0-8352-2950D6E9E098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00EE978-6B36-4B30-8719-CBC29328DD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00EE978-6B36-4B30-8719-CBC29328DD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00EE978-6B36-4B30-8719-CBC29328DD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00EE978-6B36-4B30-8719-CBC29328DD99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

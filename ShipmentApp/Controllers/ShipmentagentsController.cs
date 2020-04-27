@@ -14,7 +14,7 @@ using ShipmentApp.Data;
 using ShipmentApp.Models;
 namespace ShipmentApp.Controllers
 {
-    [Authorize]
+  ///  [Authorize]
     public class ShipmentagentsController : Controller
     {
         private readonly ShipmentAppContext _context;
