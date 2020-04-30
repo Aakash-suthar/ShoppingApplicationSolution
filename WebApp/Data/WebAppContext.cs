@@ -20,6 +20,6 @@ namespace WebApp.Data
 
         public DbSet<WebApp.Models.Payment> Payment { get; set; }
 
-        public DbSet<WebApp.Models.Shipmentagent> Shipmentagent { get; set; }
+        public DbSet<WebApp.Models.Shipmentagent3> Shipmentagent { get; set; }
     }
 }

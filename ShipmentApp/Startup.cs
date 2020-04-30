@@ -35,7 +35,7 @@ namespace ShipmentApp
          .AddOpenIdConnect("oidc", options =>
          {
              options.SignInScheme = "Cookies";
-             options.Authority = "http://localhost:5000";
+             options.Authority = "https://authenticationapp2.azurewebsites.net";
              options.RequireHttpsMetadata = false;
              options.ClientId = "shipmentagent";
              options.ClientSecret = "shipment";

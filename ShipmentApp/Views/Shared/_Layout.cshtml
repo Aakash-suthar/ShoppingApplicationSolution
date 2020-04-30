@@ -19,12 +19,23 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Shipmentagent3" asp-action="Index">Check Shipments</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                                <li class="nav-item" style="padding-left:70px;">
+                                    @*<a class="nav-link text-dark">@User.Claims.Where(p => p.Type == "name").Select(p => p.Value).Single()</a>*@
+                                    <div class="dropdown show">
+                                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            @User.Claims.Where(p => p.Type == "name").Select(p => p.Value).Single()
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" asp-action="Logout" asp-controller="Shipmentagent3">Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
                 </div>
             </div>
         </nav>

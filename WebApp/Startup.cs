@@ -34,7 +34,8 @@ namespace WebApp
            .AddOpenIdConnect("oidc", options =>
            {
                options.SignInScheme = "Cookies";
-               options.Authority = "http://localhost:5000";
+               //  options.Authority = "http://localhost:5000";
+               options.Authority = "https://authenticationapp2.azurewebsites.net";
                options.RequireHttpsMetadata = false;
                options.ClientId = "code";
                options.ClientSecret = "secret";

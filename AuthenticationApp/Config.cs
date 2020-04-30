@@ -83,9 +83,14 @@ namespace AuthenticationApp
 
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
-                    RedirectUris = { "https://localhost:44393/signin-oidc" },
+                   /* RedirectUris = { "https://localhost:44393/signin-oidc" },
                     FrontChannelLogoutUri = "https://localhost:44393/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:44393/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:44393/signout-callback-oidc" },*/
+
+                    RedirectUris = { "https://shoppingapplication.azurewebsites.net/signin-oidc" },
+                    FrontChannelLogoutUri = "https://shoppingapplication.azurewebsites.net/signout-oidc",
+                    PostLogoutRedirectUris = { "https://shoppingapplication.azurewebsites.net/signout-callback-oidc" },
+
                      AllowAccessTokensViaBrowser = true,
                      AlwaysSendClientClaims = true,
                      AlwaysIncludeUserClaimsInIdToken = true,
@@ -106,10 +111,14 @@ namespace AuthenticationApp
                     AllowedGrantTypes = GrantTypes.Hybrid,
 
                     ClientSecrets = { new Secret("shipment".Sha256()) },
-
-                    RedirectUris = { "https://localhost:44314/signin-oidc" },
+                    
+                /*    RedirectUris = { "https://localhost:44314/signin-oidc" },
                     FrontChannelLogoutUri = "https://localhost:44314/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:44314/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:44314/signout-callback-oidc" },*/
+
+                    RedirectUris = { "https://shipmentapp.azurewebsites.net/signin-oidc" },
+                    FrontChannelLogoutUri = "https://shipmentapp.azurewebsites.net/signout-oidc",
+                    PostLogoutRedirectUris = { "https://shipmentapp.azurewebsites.net/signout-callback-oidc" },
                      AllowAccessTokensViaBrowser = true,
                      AlwaysSendClientClaims = true,
                      AlwaysIncludeUserClaimsInIdToken = true,

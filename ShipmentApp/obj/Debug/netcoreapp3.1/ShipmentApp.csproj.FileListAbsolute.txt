@@ -173,8 +173,8 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\net
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\ShipmentApp.csproj.CoreCompileInputs.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\ShipmentApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagents\Create.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagents\Delete.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagents\Details.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagents\Edit.cshtml.g.cs
-C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagents\Index.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagent3\Create.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagent3\Delete.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagent3\Details.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagent3\Edit.cshtml.g.cs
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\ShipmentApp\obj\Debug\netcoreapp3.1\Razor\Views\Shipmentagent3\Index.cshtml.g.cs

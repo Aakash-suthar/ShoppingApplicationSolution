@@ -14,6 +14,6 @@ namespace ShipmentApp.Data
         {
         }
 
-        public DbSet<ShipmentApp.Models.Shipmentagent> Shipmentagent { get; set; }
+        public DbSet<ShipmentApp.Models.Shipmentagent3> Shipmentagent { get; set; }
     }
 }

@@ -38,7 +38,7 @@ namespace WebApp.Controllers
         {
             /*return View(await _context.Orders.ToListAsync());*/
             List<Orders> ol;
-            List<Shipmentagent> sg;
+            List<Shipmentagent3> sg;
            /* var token = await HttpContext.GetTokenAsync("access_token");*/
             using (var client = new HttpClient())
             {
@@ -59,7 +59,7 @@ namespace WebApp.Controllers
               /*  client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", token);*/
                 var data = await (await client.GetAsync(shipmenturi)).Content.ReadAsStringAsync();
-                sg = JsonConvert.DeserializeObject<List<Shipmentagent>>(data);
+                sg = JsonConvert.DeserializeObject<List<Shipmentagent3>>(data);
                 ViewBag.sglist = sg;
             }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoOR8DrX3pEeodLXGDc0wwgAAAAACAAAAAAAQZgAAAAEAACAAAAAmLmDvowB2IUkLLnois1DpYNPyVMjjtPKSHauI+kFRxgAAAAAOgAAAAAIAACAAAACDZHHMezlgn6vDTIBLdiZ80dQhwJXTNVG7eeVqT/lF9IAAAAAvqDi4WLTRKgd2wk0A8CMYwqHs/gCMf0AoAi2DNyZIp8yTDHRVgA37K8mFfxOwVTGFo4tUXereD5cbgS0OaT0I4onBDFSYt4JZTrnnqXHiPEpvOujAiC+DnfPUAmNLYVy9QgVCLHOkAdnDpwjaO/1NXIKxV1Z2+xluJCqprW0S8kAAAAAewqtqXJp6cR627jgmwmwhafGXD8pjuT4sBbL3p0Usr09/zuJWuHJBnNU9YYeUrYXNuFGaJyxuTBdPCHaRqdTK</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:newshopping.database.windows.net,1433%3bInitial Catalog=NewShoppingDb%3bPersist Security Info=False%3bUser ID=shopadmin%3bPassword=admin%40123%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

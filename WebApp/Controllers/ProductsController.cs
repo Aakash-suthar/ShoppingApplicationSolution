@@ -50,71 +50,87 @@ namespace WebApp.Controllers
         [Authorize]
         public ActionResult Payment()
         {
-            ViewBag.cartid = Convert.ToInt32(Request.Form["counter"]);
+          //  ViewBag.cartid = Convert.ToInt32(Request.Form["counter"]);
             return View();
         }
+
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> Paymentpost()
         {
+           // List<Orders> ol;
             Orders o = new Orders();
-            Cart ct;
+           // Cart ct;
             Payment p;
-          //  var token = await HttpContext.GetTokenAsync("access_token");
-          
+            //  var token = await HttpContext.GetTokenAsync("access_token");
 
-            using (var client = new HttpClient())
+            foreach (Cart item in c)
             {
-                p = new Payment();
-                p.Paymentstatus = true;
-                p.Creditnumber = Request.Form["creditnumber"];
 
-               /* client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);*/
-                client.BaseAddress = new Uri(paymenturi);
-                var postTask = await client.PostAsJsonAsync<Payment>("payments", p);
-                var result = await postTask.Content.ReadAsStringAsync();
-
-                p = JsonConvert.DeserializeObject<Payment>(result);
-
-            }
                 using (var client = new HttpClient())
-            {
-                int counterid = Convert.ToInt32(Request.Form["counter"]);
-                ct = c.Where(p => p.id == counterid).Single();
+                {
+                    p = new Payment();
+                    p.Paymentstatus = true;
+                    p.Creditnumber = Request.Form["creditnumber"];
 
-                o.Productid = ct.product.Id;
-                o.Quantity = ct.Quantitys;
-                o.Totalcost = ct.totalprice;
-                o.Userid = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
-                o.Orderstatus = true;
-                o.Email = User.Claims.Where(p => p.Type == "email").Select(p => p.Value).Single();
-                o.Paymentid = p.Id;
+                    /* client.DefaultRequestHeaders.Authorization =
+                     new AuthenticationHeaderValue("Bearer", token);*/
+                    client.BaseAddress = new Uri(paymenturi);
+                    var postTask = await client.PostAsJsonAsync<Payment>("payments", p);
+                    var result = await postTask.Content.ReadAsStringAsync();
 
-                o.Adress = Request.Form["adress"];
+                    p = JsonConvert.DeserializeObject<Payment>(result);
 
+                }
+                using (var client = new HttpClient())
+                {
+                  /*  int counterid = Convert.ToInt32(Request.Form["counter"]);
+                    ct = c.Where(p => p.id == counterid).Single();*/
 
-            /*    client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);*/
-                client.BaseAddress = new Uri(orderuri);
+                    o.Productid = item.product.Id;
+                    o.Quantity = item.Quantitys;
+                    o.Totalcost = item.totalprice;
+                    o.Userid = User.Claims.Where(p => p.Type == "sub").Select(p => p.Value).Single();
+                    o.Orderstatus = true;
+                    o.Email = User.Claims.Where(p => p.Type == "email").Select(p => p.Value).Single();
+                    o.Paymentid = p.Id;
 
-                var postTask = client.PostAsJsonAsync<Orders>("orders", o);
-                postTask.Wait();
+                    o.Adress = Request.Form["adress"];
 
-                var result = postTask.Result;
-                c.Remove(ct);
-                
+                    /*    client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue("Bearer", token);*/
+                    client.BaseAddress = new Uri(orderuri);
 
+                    var postTask = await client.PostAsJsonAsync<Orders>("orders", o);
+                    var result = await postTask.Content.ReadAsStringAsync();
+                    o = JsonConvert.DeserializeObject<Orders>(result);
+                    // c.Remove(item);
+                }
+                /*  using (var client = new HttpClient())
+                  {
+                      var data = await (await client.GetAsync(orderuri)).Content.ReadAsStringAsync();
+                      ol = JsonConvert.DeserializeObject<List<Orders>>(data);*/
+                //     o = ol.Where(p => p.Paymentid == p.Id).Single();
+                // }
 
-                
+                try
+                {
+                    var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+                    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+                    CloudQueue queue = queueClient.GetQueueReference("demoqueue");
+                    await queue.CreateIfNotExistsAsync();
+                    var me = JsonConvert.SerializeObject(o);
+                    await queue.AddMessageAsync(new CloudQueueMessage(me));
+                }
+                catch (Exception e) {
+                    // Console.WriteLine();
+                    ViewBag.fail = "Order placed Failed" + e.Message;
+                }
             }
-            var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("demoqueue");
-            await queue.CreateIfNotExistsAsync();
-            var me = JsonConvert.SerializeObject(o);
-            await queue.AddMessageAsync(new CloudQueueMessage(me));
+            ViewBag.success = "Order Placed Successfullyy";
+            c.Clear();
             return RedirectToAction(nameof(Index));
 
         }
@@ -149,7 +165,7 @@ namespace WebApp.Controllers
                     Quantitys = Convert.ToInt32(Request.Form["Quan"])
                 }) ;
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ViewCart));
             }
         }
 

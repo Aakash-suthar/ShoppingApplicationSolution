@@ -49,7 +49,7 @@ namespace OrderApi.Controllers
             _context.Orders.Add(orders);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return orders;
         }
 
         // DELETE: api/Orders/5

@@ -24,8 +24,6 @@ namespace ShipmentApp.Controllers
         {
             _logger = logger;
         }
-
-       // [Authorize]
         public async Task<IActionResult> Index()
         {
             var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
@@ -34,25 +32,28 @@ namespace ShipmentApp.Controllers
             CloudQueue queue = queueClient.GetQueueReference("demoqueue");
             await queue.CreateIfNotExistsAsync();
             var retrievedMessage = queue.GetMessage();
-            Orders order = JsonConvert.DeserializeObject<Orders>(retrievedMessage.AsString);
-
-            Shipmentagent3 s = new Shipmentagent3();
-            s.DeliveryGuy = "Nimesh";
-             s.Orderid = order.Id;
-            s.Statuss = "In Transit";
-
-            using (var client = new HttpClient())
+            if (retrievedMessage != null)
             {
-                /* var token = await HttpContext.GetTokenAsync("access_token");
-                 client.DefaultRequestHeaders.Authorization =
-                  new AuthenticationHeaderValue("Bearer", token);*/
-                 client.BaseAddress = new Uri("https://shipmentapinew.azurewebsites.net/api/shipmentagent3");
-              ////  client.BaseAddress = new Uri("https://localhost:44359/api/shipmentagent3");
-                var postTask = await client.PostAsJsonAsync<Shipmentagent3>("shipmentagent3", s);
-                //postTask.Wait();
-              //  var result = postTask.Result;
-            }
+                Orders order = JsonConvert.DeserializeObject<Orders>(retrievedMessage.AsString);
+
+                Shipmentagent3 s = new Shipmentagent3();
+                s.DeliveryGuy = "Nimesh";
+                s.Orderid = order.Id;
+                s.Statuss = "In Transit";
+
+                using (var client = new HttpClient())
+                {
+                    /* var token = await HttpContext.GetTokenAsync("access_token");
+                     client.DefaultRequestHeaders.Authorization =
+                      new AuthenticationHeaderValue("Bearer", token);*/
+                    client.BaseAddress = new Uri("https://shipmentapinew.azurewebsites.net/api/shipmentagent3");
+                    ////  client.BaseAddress = new Uri("https://localhost:44359/api/shipmentagent3");
+                    var postTask = await client.PostAsJsonAsync<Shipmentagent3>("shipmentagent3", s);
+                    //postTask.Wait();
+                    //  var result = postTask.Result;
+                }
                 queue.DeleteMessage(retrievedMessage);
+            }
                 return View();
         }
 

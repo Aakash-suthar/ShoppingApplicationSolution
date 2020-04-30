@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.Orderstatus)
             </td>
             <td>
-                @foreach (Shipmentagent p in (IEnumerable<Shipmentagent>)ViewBag.sglist)
+                @foreach (Shipmentagent3 p in (IEnumerable<Shipmentagent3>)ViewBag.sglist)
                 {
                     @if (p.Orderid == item.Id)
                     {
@@ -73,9 +73,9 @@
                 }
             </td>
             <td>
-                @foreach (Shipmentagent p in (IEnumerable<Shipmentagent>)ViewBag.sglist)
+                @foreach (Shipmentagent3 p in (IEnumerable<Shipmentagent3>)ViewBag.sglist)
                 {
-                    @if (p.Orderid == item.Productid)
+                    @if (p.Orderid == item.Id)
                     {
                         @p.DeliveryGuy
                     }
@@ -83,7 +83,7 @@
             </td>
             <td>
                 @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
-                @*<a asp-action="Details" asp-route-id="@item.Id">Make Payment</a>*@ |
+                @*<a asp-action="Details" asp-route-id="@item.Id">Make Payment</a>*@ 
                 @*<a asp-action="Delete" asp-route-id="@item.Id">Cancel</a>*@
             </td>
         </tr>
