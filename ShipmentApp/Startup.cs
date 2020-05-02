@@ -46,10 +46,10 @@ namespace ShipmentApp
                options.Scope.Add("openid");
              options.Scope.Add("email");
              options.Scope.Add("profile");
-             options.Scope.Add("productapi");
+           //  options.Scope.Add("productapi");
              options.Scope.Add("orderapi");
-             options.Scope.Add("paymentapi");
-               // options.Scope.Add("shipmentapi");
+            // options.Scope.Add("paymentapi");
+                options.Scope.Add("shipmentapi");
                //     options.Scope.Add("role");
                //  options.Scope.Add("customProfile");
                options.Scope.Add("offline_access");

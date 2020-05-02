@@ -190,3 +190,8 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Release\netcor
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Release\netcoreapp3.1\WebApp.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Release\netcoreapp3.1\WebApp.pdb
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Release\netcoreapp3.1\WebApp.genruntimeconfig.cache
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Release\netcoreapp3.1\Microsoft.Azure.Services.AppAuthentication.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Release\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Release\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Release\netcoreapp3.1\Microsoft.Azure.ServiceBus.dll

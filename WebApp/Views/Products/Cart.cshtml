@@ -4,21 +4,25 @@
     ViewData["Title"] = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div style="text-align:center">
+        <h1>Cart</h1>
+    </div>
 
-<h1>Cart</h1>
+<br/>
+<br />
+<br />
 
 <div class="row">
     <form asp-action="Cart">
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
-            <label asp-for="Productname" class="control-label"></label>
-            <input asp-for="Productname" class="form-control" readonly />
+            <input asp-for="Productname" class="form-control" readonly style="width:100px;" />
             <span asp-validation-for="Productname" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label  name = "Quantity" class="control-label"></label>
+            <label name="Quantity" class="control-label"></label>
             @*< asp-for="Quantity" class="form-control" />*@
-            <select name ="Quan">
+            <select name="Quan">
                 @for (var i = 1; i <= ViewBag.quantity; i++)
                 {
                     <option value="@i">@i</option>

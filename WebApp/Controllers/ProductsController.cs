@@ -15,6 +15,8 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Queue;
+using Microsoft.Azure.ServiceBus;
+using System.Text;
 
 namespace WebApp.Controllers
 {
@@ -59,8 +61,9 @@ namespace WebApp.Controllers
         [Authorize]
         public async Task<ActionResult> Paymentpost()
         {
-           // List<Orders> ol;
-            Orders o = new Orders();
+           var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+            Orders o;
            // Cart ct;
             Payment p;
             //  var token = await HttpContext.GetTokenAsync("access_token");
@@ -87,7 +90,7 @@ namespace WebApp.Controllers
                 {
                   /*  int counterid = Convert.ToInt32(Request.Form["counter"]);
                     ct = c.Where(p => p.id == counterid).Single();*/
-
+                    o = new Orders();
                     o.Productid = item.product.Id;
                     o.Quantity = item.Quantitys;
                     o.Totalcost = item.totalprice;
@@ -97,27 +100,15 @@ namespace WebApp.Controllers
                     o.Paymentid = p.Id;
 
                     o.Adress = Request.Form["adress"];
-
-                    /*    client.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue("Bearer", token);*/
                     client.BaseAddress = new Uri(orderuri);
 
                     var postTask = await client.PostAsJsonAsync<Orders>("orders", o);
                     var result = await postTask.Content.ReadAsStringAsync();
                     o = JsonConvert.DeserializeObject<Orders>(result);
-                    // c.Remove(item);
                 }
-                /*  using (var client = new HttpClient())
-                  {
-                      var data = await (await client.GetAsync(orderuri)).Content.ReadAsStringAsync();
-                      ol = JsonConvert.DeserializeObject<List<Orders>>(data);*/
-                //     o = ol.Where(p => p.Paymentid == p.Id).Single();
-                // }
 
                 try
                 {
-                    var connectionString = "DefaultEndpointsProtocol=https;AccountName=demostorageshopping;AccountKey=y7kWOLEjUvNJQcf6LO0+PRm7ZFtcAFku41sTN5ZZbnT/zTOb/aeP1Gl++EhHmdOvpBwjt6q8yn8Ykdw7pxuPow==;EndpointSuffix=core.windows.net";
-                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
                     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
                     CloudQueue queue = queueClient.GetQueueReference("demoqueue");
                     await queue.CreateIfNotExistsAsync();
@@ -125,7 +116,6 @@ namespace WebApp.Controllers
                     await queue.AddMessageAsync(new CloudQueueMessage(me));
                 }
                 catch (Exception e) {
-                    // Console.WriteLine();
                     ViewBag.fail = "Order placed Failed" + e.Message;
                 }
             }

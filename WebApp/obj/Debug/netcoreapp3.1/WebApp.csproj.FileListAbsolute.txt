@@ -188,5 +188,10 @@ C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcorea
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.KeyVault.Core.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.Storage.Common.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.Storage.Queue.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.ServiceBus.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.Azure.Services.AppAuthentication.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\Vishal-PC\Desktop\ShoppingApplicationSolution\WebApp\obj\Debug\netcoreapp3.1\WebApp.MvcApplicationPartsAssemblyInfo.cache
